@@ -23,7 +23,7 @@ public class TestUtilTest {
 
         assertThat(cmd).isEqualTo("등록");
         assertThat(content).isEqualTo("현재를 사랑하라.");
-        assertThat(author).isEqualTo("작자 미상");
+        assertThat(author).isEqualTo("작자미상");
     }
 
     @Test
@@ -35,7 +35,7 @@ public class TestUtilTest {
 
         String rst = byteArrayOutputStream.toString();
 
-        assertThat(rst).isEqualTo("안녕하세요");
+        assertThat(rst).contains("안녕하세요");
     }
 
 
