@@ -15,7 +15,6 @@ public class TestUtil {
 //        //명언 프로그램 실행
 //
 //        //출력값
-//
 //    }
 
     public static Scanner getScanner(String input) {
