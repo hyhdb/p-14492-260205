@@ -1,7 +1,9 @@
 package com.back;
 
+import com.back.global.AppContext;
 import com.back.system.controller.SystemController;
 import com.back.wiseSaying.controller.WiseSayingController;
+
 import java.util.Scanner;
 
 public class App {
@@ -10,10 +12,10 @@ public class App {
     private WiseSayingController wiseSayingController;
     private SystemController systemController;
 
-    public App(Scanner sc) {
-        this.sc = sc;
-        this.wiseSayingController = new WiseSayingController(sc);
-        this.systemController = new SystemController();
+    public App() {
+        this.sc = AppContext.sc;
+        wiseSayingController= AppContext.wiseSayingController;
+        systemController = AppContext.systemController;
     }
 
     public void run() {
