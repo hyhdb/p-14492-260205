@@ -14,7 +14,7 @@ public class AppTest {
     void t1() {
         Scanner sc = TestUtil.getScanner("종료");
 
-        ByteArrayOutputStream outputStream = TestUtil.setOutByteArray()git push origin main --force;
+        ByteArrayOutputStream outputStream = TestUtil.setOutByteArray();
         new App(sc).run();
         String out = outputStream.toString();
 
