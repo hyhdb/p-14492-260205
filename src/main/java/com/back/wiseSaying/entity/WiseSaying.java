@@ -1,3 +1,5 @@
+package com.back.wiseSaying.entity;
+
 public class WiseSaying {
     private int id;
     private String saying;
@@ -31,5 +33,9 @@ public class WiseSaying {
 
     public void setAuthor(String author) {
         this.author = author;
+    }
+
+    public boolean isNew() {
+        return id == 0;
     }
 }

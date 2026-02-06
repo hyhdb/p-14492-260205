@@ -1,5 +1,7 @@
-import java.util.ArrayList;
-import java.util.List;
+package com.back;
+
+import com.back.system.controller.SystemController;
+import com.back.wiseSaying.controller.WiseSayingController;
 import java.util.Scanner;
 
 public class App {
@@ -16,12 +18,11 @@ public class App {
 
     public void run() {
 
-        System.out.println("== 명언 앱 ==");
-        int lastId = 0;
 
-        List<WiseSaying> wiseSayings = new ArrayList<>();
+        System.out.println("== 명언 앱 ==");
 
         while (true) {
+
             System.out.println("명령) ");
             String cmd = sc.nextLine();
 
