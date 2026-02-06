@@ -4,6 +4,9 @@ import java.util.Scanner;
 
 public class TestUtil {
 
+    private static PrintStream ORIGINAL_OUT = System.out;
+    private static PrintStream CURRNET_OUT = System.out;
+
 //    public static String run(String input) {
 //
 //        //입력값
@@ -15,7 +18,6 @@ public class TestUtil {
 //
 //    }
 
-
     public static Scanner getScanner(String input) {
         return new Scanner(input);
     }
@@ -26,7 +28,14 @@ public class TestUtil {
         PrintStream printStream = new PrintStream(byteArrayOutputStream);
 
         System.setOut(printStream);
+        CURRNET_OUT = printStream;
 
         return byteArrayOutputStream;
+    }
+
+    public static void clearSetOutByteArray(ByteArrayOutputStream outputStream)throws Exception {
+        System.setOut(ORIGINAL_OUT);
+        outputStream.close();
+        CURRNET_OUT.close();
     }
 }
