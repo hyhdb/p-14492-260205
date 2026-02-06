@@ -85,13 +85,12 @@ public class WiseSayingControllerTest {
     @DisplayName("삭제?id=1")
     void t6() {
         String out = AppTestRunner.run("""
-                등록x`
+                등록
                 현재를 사랑하라.
                 작자미상
                 등록
                 과거에 집착하지 마라.
                 작자미상
-                목록
                 삭제?id=1
                 목록
                 """);
