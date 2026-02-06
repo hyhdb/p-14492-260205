@@ -4,7 +4,7 @@ import java.util.Scanner;
 public class AppTestRunner {
 
     public static String run(String input) {
-        Scanner sc = TestUtil.getScanner(input);
+        Scanner sc = TestUtil.getScanner(input + "\n종료");
 
         ByteArrayOutputStream outputStream = TestUtil.setOutByteArray();
 
