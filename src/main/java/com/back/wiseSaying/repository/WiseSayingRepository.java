@@ -1,6 +1,7 @@
 package com.back.wiseSaying.repository;
 
 
+import com.back.wiseSaying.dto.PageDto;
 import com.back.wiseSaying.entity.WiseSaying;
 
 import java.util.ArrayList;
@@ -12,16 +13,12 @@ public class WiseSayingRepository {
     private int lastId = 0;
 
     public WiseSaying save(WiseSaying wiseSaying) {
-        if(wiseSaying.isNew()) {
+        if (wiseSaying.isNew()) {
             wiseSaying.setId(++lastId);
             wiseSayings.add(wiseSaying);
         }
 
         return wiseSaying;
-    }
-
-    public List<WiseSaying> findListDesc() {
-        return wiseSayings.reversed();
     }
 
     public boolean delete(int id) {
@@ -36,4 +33,39 @@ public class WiseSayingRepository {
                 .orElse(null);
     }
 
+    public PageDto findListDesc(int page, int pageSize) {
+        return pageOf(wiseSayings, page, pageSize);
+    }
+
+    public PageDto findByContentKeywordOrderByDesc(String kw, int page, int pageSize) {
+
+        List<WiseSaying> filteredContent = wiseSayings.reversed()
+                .stream()
+                .filter(w -> w.getSaying().contains(kw))
+                .toList();
+
+        return pageOf(filteredContent, page, pageSize);
+    }
+
+    public PageDto findByAuthorKeywordOrderByDesc(String kw, int page, int pageSize) {
+
+        List<WiseSaying> filteredContent = wiseSayings.reversed()
+                .stream()
+                .filter(w -> w.getAuthor().contains(kw))
+                .toList();
+
+        return pageOf(filteredContent, page, pageSize);
+    }
+
+    private PageDto pageOf(List<WiseSaying> filteredContent, int page, int pageSize) {
+        int totalCount = filteredContent.size();
+
+        List<WiseSaying> pagedFilteredContent = filteredContent.reversed()
+                .stream()
+                .skip((page - 1) * pageSize)
+                .limit(pageSize)
+                .toList();
+
+        return new PageDto(page, pageSize, totalCount, pagedFilteredContent);
+    }
 }

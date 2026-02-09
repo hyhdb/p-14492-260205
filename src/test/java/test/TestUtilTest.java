@@ -11,9 +11,9 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class TestUtilTest {
 
     @Test
-    @DisplayName("test.TestUtil.getScanner()")
+    @DisplayName("test.TestUtil.genScanner()")
     void t1() {
-        Scanner scanner = TestUtil.getScanner("""
+        Scanner scanner = TestUtil.genScanner("""
                 등록
                 현재를 사랑하라.
                 작자미상
@@ -37,12 +37,12 @@ public class TestUtilTest {
 
         String rst = byteArrayOutputStream.toString();
 
-        TestUtil.clearSetOutByteArray(byteArrayOutputStream);
+        TestUtil.clearSetOutToByteArray(byteArrayOutputStream);
 
-        System.out.println("출력 결과: " + rst);
+        System.out.println("출력 결과 : " + rst);
 
         assertThat(rst).contains("1 / 이순신 / 나의 죽음을 적에게 알리지 마라");
-    }
 
+    }
 
 }

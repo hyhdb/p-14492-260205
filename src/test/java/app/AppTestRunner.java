@@ -10,14 +10,20 @@ import java.util.Scanner;
 public class AppTestRunner {
 
     public static String run(String input) {
-        Scanner sc = TestUtil.getScanner(input + "\n종료");
+        Scanner sc = TestUtil.genScanner(input + "\n종료");
 
         ByteArrayOutputStream outputStream = TestUtil.setOutByteArray();
 
         AppContext.init(sc);
         new App().run();
 
-        return outputStream.toString();
+        try {
+            TestUtil.clearSetOutToByteArray(outputStream);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
 
+        return outputStream.toString();
     }
+
 }

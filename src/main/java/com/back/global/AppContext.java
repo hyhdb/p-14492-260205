@@ -19,13 +19,11 @@ public class AppContext {
         AppContext.sc = _sc;
         AppContext.wiseSayingRepository = new WiseSayingRepository();
         AppContext.wiseSayingService = new WiseSayingService();
-        AppContext.wiseSayingController = new WiseSayingController();
+        AppContext.wiseSayingController = new WiseSayingController(sc);
         AppContext.systemController = new SystemController();
     }
 
     public static void init() {
         init(new Scanner(System.in));
     }
-
-
 }
