@@ -12,7 +12,7 @@ public class WiseSayingService {
     private WiseSayingRepository wiseSayingRepository;
 
     public WiseSayingService() {
-        this.wiseSayingRepository = AppContext.wiseSayingFileRepository;
+        this.wiseSayingRepository = AppContext.wiseSayingRepository;
     }
 
     public WiseSaying write(String content, String author) {
@@ -24,7 +24,7 @@ public class WiseSayingService {
 
     public boolean delete(int id) {
         Optional<WiseSaying> wiseSayingOp = wiseSayingRepository.findById(id);
-        if (wiseSayingOp.isEmpty()) {
+        if(wiseSayingOp.isEmpty()) {
             return false;
         }
         return wiseSayingRepository.delete(wiseSayingOp.get());
